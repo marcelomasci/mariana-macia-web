@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — Mariana Macía Abogada</title>
+  <meta name="description" content="Consultá con Mariana Macía, abogada especialista en adopción. Asesorías, área judicial, formación y conferencias." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ==================== NAVEGACIÓN ==================== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Inicio">
+        <img src="https://lh3.googleusercontent.com/d/1AbhN9QsWiSOcl-c3zZY89r1Jz-AjxQli"
+             alt="Mariana Macía Abogada"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="nav-logo-text" style="display:none;">
+          <span class="name">Mariana Macía</span>
+          <span class="title">Abogada</span>
+        </div>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="sobre-mi.html">Sobre Mí</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="formacion.html">Formación</a></li>
+        <li><a href="conferencias.html">Conferencias</a></li>
+        <li class="nav-cta"><a href="contacto.html" class="btn btn-primary active">Consultar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== PAGE HERO ==================== -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label" style="color:rgba(255,255,255,0.7)">Hablemos</span>
+      <h1>Contacto</h1>
+      <p>El primer paso es siempre una conversación. Sin compromiso, con toda la atención.</p>
+      <p class="breadcrumb"><a href="index.html">Inicio</a> <span>·</span> Contacto</p>
+    </div>
+  </section>
+
+  <!-- ==================== FORMULARIO ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- PANEL IZQUIERDO -->
+        <div class="contact-info-panel">
+          <h3>Información de contacto</h3>
+
+          <div class="contact-info-item">
+            <div class="icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <!-- COMPLETAR con el email real de Mariana -->
+              <a href="mailto:COMPLETAR@EMAIL.COM">COMPLETAR@EMAIL.COM</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="icon">📱</div>
+            <div>
+              <strong>Teléfono / WhatsApp</strong>
+              <!-- COMPLETAR con el teléfono real de Mariana -->
+              <span>COMPLETAR TELÉFONO</span>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="icon">📷</div>
+            <div>
+              <strong>Instagram</strong>
+              <a href="https://www.instagram.com/mamaporadopcionyabogada/" target="_blank" rel="noopener">@mamaporadopcionyabogada</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="icon">📍</div>
+            <div>
+              <strong>Atención judicial</strong>
+              <span>CABA y Provincia de Buenos Aires</span>
+            </div>
+          </div>
+
+          <div class="contact-info-item" style="border-bottom: none;">
+            <div class="icon">💻</div>
+            <div>
+              <strong>Asesorías virtuales</strong>
+              <span>Todo el país</span>
+            </div>
+          </div>
+
+          <div style="margin-top: var(--spacing-md); padding-top: var(--spacing-sm); border-top: 1px solid rgba(255,255,255,0.15);">
+            <p style="font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin: 0;">
+              Respondo consultas de lunes a viernes en horario de oficina. Intentá ser lo más específico/a posible sobre tu situación para poder orientarte mejor.
+            </p>
+          </div>
+        </div>
+
+        <!-- FORMULARIO DERECHO -->
+        <div class="contact-form-panel">
+          <span class="section-label">Formulario de consulta</span>
+          <h2 style="margin-bottom: var(--spacing-sm);">¿En qué puedo ayudarte?</h2>
+          <p style="color: var(--color-text-light); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Completá el formulario y te responderé a la brevedad. Al enviarlo, se abrirá tu cliente de email con el mensaje pre-completado.</p>
+
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre *</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+              </div>
+              <div class="form-group">
+                <label for="apellido">Apellido *</label>
+                <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono (opcional)</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+54 11..." />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="servicio">Tipo de consulta *</label>
+              <select id="servicio" name="servicio" required>
+                <option value="">— Seleccioná una opción —</option>
+                <option value="Asesoría">Asesoría (consulta legal)</option>
+                <option value="Área Judicial">Área Judicial (representación)</option>
+                <option value="Talleres o grupos">Talleres o grupos</option>
+                <option value="Docencia">Docencia</option>
+                <option value="Conferencia o medio">Conferencia o invitación a medio</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mensaje">Mensaje *</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Contame brevemente tu situación o tu consulta. Cuanto más detalle, mejor podré orientarte..." required></textarea>
+            </div>
+
+            <div style="margin-bottom: var(--spacing-sm);">
+              <p style="font-size: 0.8rem; color: var(--color-text-light);">* Campos obligatorios</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+              Enviar consulta →
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="section section-light">
+    <div class="container" style="max-width: 800px;">
+      <div class="section-header">
+        <span class="section-label">Antes de escribir</span>
+        <div class="section-divider"></div>
+        <h2>Preguntas frecuentes</h2>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-sm);">
+        <details style="background: white; border-radius: var(--border-radius-sm); padding: var(--spacing-sm) var(--spacing-md); box-shadow: var(--shadow-card);">
+          <summary style="font-weight: 600; color: var(--color-primary); cursor: pointer; padding: 0.25rem 0;">¿Las asesorías son presenciales o virtuales?</summary>
+          <p style="margin-top: var(--spacing-sm); color: var(--color-text-light); margin-bottom: 0;">Las asesorías son 100% virtuales por videollamada, lo que te permite acceder desde cualquier punto del país.</p>
+        </details>
+
+        <details style="background: white; border-radius: var(--border-radius-sm); padding: var(--spacing-sm) var(--spacing-md); box-shadow: var(--shadow-card);">
+          <summary style="font-weight: 600; color: var(--color-primary); cursor: pointer; padding: 0.25rem 0;">¿Trabaja con adopciones fuera de Buenos Aires?</summary>
+          <p style="margin-top: var(--spacing-sm); color: var(--color-text-light); margin-bottom: 0;">Las asesorías llegan a todo el país. La representación judicial es en CABA y Provincia de Buenos Aires.</p>
+        </details>
+
+        <details style="background: white; border-radius: var(--border-radius-sm); padding: var(--spacing-sm) var(--spacing-md); box-shadow: var(--shadow-card);">
+          <summary style="font-weight: 600; color: var(--color-primary); cursor: pointer; padding: 0.25rem 0;">¿Cuánto tarda en responder?</summary>
+          <p style="margin-top: var(--spacing-sm); color: var(--color-text-light); margin-bottom: 0;">Responde dentro de las 48 horas hábiles. Si tu consulta es urgente, indicalo en el mensaje.</p>
+        </details>
+
+        <details style="background: white; border-radius: var(--border-radius-sm); padding: var(--spacing-sm) var(--spacing-md); box-shadow: var(--shadow-card);">
+          <summary style="font-weight: 600; color: var(--color-primary); cursor: pointer; padding: 0.25rem 0;">¿La primera consulta tiene costo?</summary>
+          <p style="margin-top: var(--spacing-sm); color: var(--color-text-light); margin-bottom: 0;">Escribinos para conocer las condiciones actuales. El primer contacto por formulario no tiene costo.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-text">
+            <span class="name">Mariana Macía</span>
+            <span class="title">Abogada</span>
+          </div>
+          <p>Especialista en adopción. Acompañando familias con conocimiento jurídico y corazón.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/mamaporadopcionyabogada/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Páginas</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="sobre-mi.html">Sobre Mí</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="formacion.html">Formación</a></li>
+            <li><a href="conferencias.html">Conferencias</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="contacto.html">Hacer una consulta</a></li>
+            <li><a href="mailto:COMPLETAR@EMAIL.COM">COMPLETAR@EMAIL.COM</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Mariana Macía. Todos los derechos reservados.</span>
+        <span>Buenos Aires, Argentina</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => { toggle.classList.toggle('open'); links.classList.toggle('open'); });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { toggle.classList.remove('open'); links.classList.remove('open'); }));
+
+    // Pre-seleccionar servicio desde URL param
+    const params = new URLSearchParams(window.location.search);
+    const servicioParam = params.get('servicio');
+    if (servicioParam) {
+      const select = document.getElementById('servicio');
+      for (let opt of select.options) {
+        if (opt.value.toLowerCase().includes(servicioParam.toLowerCase())) {
+          opt.selected = true;
+          break;
+        }
+      }
+    }
+
+    // Formulario mailto
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nombre   = document.getElementById('nombre').value.trim();
+      const apellido = document.getElementById('apellido').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const telefono = document.getElementById('telefono').value.trim();
+      const servicio = document.getElementById('servicio').value;
+      const mensaje  = document.getElementById('mensaje').value.trim();
+
+      // Validación básica
+      if (!nombre || !apellido || !email || !servicio || !mensaje) {
+        alert('Por favor completá todos los campos obligatorios.');
+        return;
+      }
+
+      // Armar cuerpo del email
+      const body = [
+        `Nombre: ${nombre} ${apellido}`,
+        `Email: ${email}`,
+        telefono ? `Teléfono: ${telefono}` : '',
+        `Tipo de consulta: ${servicio}`,
+        '',
+        `Mensaje:`,
+        mensaje,
+      ].filter(Boolean).join('\n');
+
+      const subject = encodeURIComponent(`Consulta web — ${servicio} — ${nombre} ${apellido}`);
+      const bodyEnc = encodeURIComponent(body);
+
+      // COMPLETAR con el email real de Mariana
+      const destinatario = 'COMPLETAR@EMAIL.COM';
+
+      window.location.href = `mailto:${destinatario}?subject=${subject}&body=${bodyEnc}`;
+    });
+  </script>
+</body>
+</html>
