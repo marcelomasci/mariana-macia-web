@@ -262,6 +262,11 @@ p:last-child { margin-bottom: 0; }
   margin-left: var(--spacing-sm);
 }
 
+.nav-cta .btn-primary,
+.nav-cta .btn-primary:hover {
+  color: var(--color-white);
+}
+
 /* Hamburger */
 .nav-toggle {
   display: none;

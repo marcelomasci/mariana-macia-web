@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contacto — Mariana Macía Abogada</title>
+  <title>Contacto — Mariana Macía | Adopción y Derecho de Familia</title>
   <meta name="description" content="Consultá con Mariana Macía, abogada especialista en adopción. Asesorías, área judicial, formación y conferencias." />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -13,9 +13,8 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Inicio">
-        <img src="https://lh3.googleusercontent.com/d/1AbhN9QsWiSOcl-c3zZY89r1Jz-AjxQli"
-             alt="Mariana Macía Abogada"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <img src="assets/logo.svg"
+             alt="Mariana Macía Abogada" />
         <div class="nav-logo-text" style="display:none;">
           <span class="name">Mariana Macía</span>
           <span class="title">Abogada</span>
@@ -58,8 +57,7 @@
             <div class="icon">✉️</div>
             <div>
               <strong>Email</strong>
-              <!-- COMPLETAR con el email real de Mariana -->
-              <a href="mailto:COMPLETAR@EMAIL.COM">COMPLETAR@EMAIL.COM</a>
+              <a href="mailto:info@marianamacia.com">info@marianamacia.com</a>
             </div>
           </div>
 
@@ -67,8 +65,7 @@
             <div class="icon">📱</div>
             <div>
               <strong>Teléfono / WhatsApp</strong>
-              <!-- COMPLETAR con el teléfono real de Mariana -->
-              <span>COMPLETAR TELÉFONO</span>
+              <a href="https://wa.me/5491140859414">+54 9 11 4085-9414</a>
             </div>
           </div>
 
@@ -107,7 +104,7 @@
         <div class="contact-form-panel">
           <span class="section-label">Formulario de consulta</span>
           <h2 style="margin-bottom: var(--spacing-sm);">¿En qué puedo ayudarte?</h2>
-          <p style="color: var(--color-text-light); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Completá el formulario y te responderé a la brevedad. Al enviarlo, se abrirá tu cliente de email con el mensaje pre-completado.</p>
+          <p style="color: var(--color-text-light); font-size: 0.9rem; margin-bottom: var(--spacing-md);">Completá el formulario y al enviarlo se abrirá WhatsApp con tu mensaje listo para enviar.</p>
 
           <form id="contactForm" novalidate>
             <div class="form-row">
@@ -155,7 +152,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
-              Enviar consulta →
+              Enviar por WhatsApp →
             </button>
           </form>
         </div>
@@ -206,9 +203,11 @@
             <span class="name">Mariana Macía</span>
             <span class="title">Abogada</span>
           </div>
-          <p>Especialista en adopción. Acompañando familias con conocimiento jurídico y corazón.</p>
+          <p>Acompañando procesos que transforman. Adopción y derecho de familia.</p>
           <div class="footer-social">
             <a href="https://www.instagram.com/mamaporadopcionyabogada/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+            <a href="https://linkedin.com/in/mariana-macía" target="_blank" rel="noopener" aria-label="LinkedIn">💼</a>
+            <a href="https://youtube.com/@mamaporadopcionyabogada" target="_blank" rel="noopener" aria-label="YouTube">▶️</a>
           </div>
         </div>
         <div class="footer-col">
@@ -225,7 +224,7 @@
           <h4>Contacto</h4>
           <ul>
             <li><a href="contacto.html">Hacer una consulta</a></li>
-            <li><a href="mailto:COMPLETAR@EMAIL.COM">COMPLETAR@EMAIL.COM</a></li>
+            <li><a href="mailto:info@marianamacia.com">info@marianamacia.com</a></li>
           </ul>
         </div>
       </div>
@@ -275,24 +274,19 @@
         return;
       }
 
-      // Armar cuerpo del email
-      const body = [
+      const lineas = [
+        `Hola Mariana! Te escribo desde el formulario de tu sitio web.`,
+        ``,
         `Nombre: ${nombre} ${apellido}`,
         `Email: ${email}`,
-        telefono ? `Teléfono: ${telefono}` : '',
-        `Tipo de consulta: ${servicio}`,
-        '',
+        ...(telefono ? [`Teléfono: ${telefono}`] : []),
+        `Consulta: ${servicio}`,
+        ``,
         `Mensaje:`,
         mensaje,
-      ].filter(Boolean).join('\n');
+      ];
 
-      const subject = encodeURIComponent(`Consulta web — ${servicio} — ${nombre} ${apellido}`);
-      const bodyEnc = encodeURIComponent(body);
-
-      // COMPLETAR con el email real de Mariana
-      const destinatario = 'COMPLETAR@EMAIL.COM';
-
-      window.location.href = `mailto:${destinatario}?subject=${subject}&body=${bodyEnc}`;
+      window.open(`https://wa.me/5491140859414?text=${encodeURIComponent(lineas.join('\n'))}`, '_blank');
     });
   </script>
 </body>
