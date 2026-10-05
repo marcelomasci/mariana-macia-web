@@ -105,8 +105,6 @@
         <section class="py-16 bg-gray-50">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
                 
-                <!-- Introducción -->
-               
                 <!-- ¿De qué estamos hablando? -->
                 <div>
                     <h2 class="text-3xl font-bold text-gray-900 mb-6">¿De qué estamos hablando exactamente?</h2>
@@ -208,7 +206,7 @@
                             <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-lg mr-4 mt-1">4</span>
                             <div>
                                 <h4 class="text-xl font-bold text-gray-900">La historia y el tiempo del vínculo familiar</h4>
-                                <p class="text-gray-600">Antigüedad, continuidad y consolidación del lazo.</p>
+                                <p class="text-gray-600">Antigüedad, continuity y consolidación del lazo.</p>
                             </div>
                         </li>
                     </ul>
@@ -259,7 +257,8 @@
                                 <div>
                                     <label for="whatsapp" class="block text-sm font-semibold text-gray-700">3. Tu WhatsApp <span class="text-red-500">*</span></label>
                                     <p class="text-xs text-gray-500 mt-1 mb-2">Código de área + número, sin el 0 ni el 15. Ej: 1140859414</p>
-                                    <input type="tel" name="whatsapp" id="whatsapp" required class="block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 sm:text-sm py-3 px-4 border bg-gray-50">
+                                    <input type="tel" name="whatsapp" id="whatsapp" required pattern="[\+]?[0-9\s\-]+" title="Por favor, ingresa solo números (puedes usar el signo + al principio)." class="block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 sm:text-sm py-3 px-4 border bg-gray-50">
+                                    <p id="error-whatsapp" class="text-red-500 text-xs mt-2 hidden">Por favor, ingresa un número de teléfono válido (al menos 8 números).</p>
                                 </div>
                             </div>
 
@@ -639,28 +638,55 @@
         });
 
 
-        // Lógica de envío a Google Sheets
         const form = document.getElementById('google-sheet-form');
         const submitBtn = document.getElementById('submit-btn');
         const successMsg = document.getElementById('success-msg');
         const errorMsg = document.getElementById('error-msg');
         const errorDisponibilidad = document.getElementById('error-disponibilidad');
+        const errorWhatsapp = document.getElementById('error-whatsapp');
+        const whatsappInput = document.getElementById('whatsapp');
         
         // REEMPLAZA ESTA URL CON LA QUE OBTENGAS DE TU APPS SCRIPT
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzLQuOMHdKMuciY3t-QistfMt6jDPYi_5bs137mNZ5PxJX1bFd2EZt4z5Rh_E9S5KncdA/exec';
 
+        // Validación en tiempo real para el campo WhatsApp
+        whatsappInput.addEventListener('input', function (e) {
+            // Reemplaza cualquier carácter que no sea un número, espacio, guion o el signo más al inicio
+            this.value = this.value.replace(/[^\d\s\-\+]/g, '');
+            // Opcional: Validar que el "+" solo esté al principio
+            if (this.value.indexOf('+') > 0) {
+                 this.value = this.value.replace(/\+/g, '').replace(/^/, '+');
+            }
+        });
+
         form.addEventListener('submit', e => {
             e.preventDefault();
             
+            let isValid = true;
+
             // Validación manual para checkboxes (Disponibilidad)
             const disponibilidadCheckboxes = document.querySelectorAll('.disponibilidad-cb:checked');
             if (disponibilidadCheckboxes.length === 0) {
                 errorDisponibilidad.classList.remove('hidden');
                 document.querySelector('.disponibilidad-cb').focus();
-                return; // Detiene el envío
+                isValid = false;
             } else {
                 errorDisponibilidad.classList.add('hidden');
             }
+
+            // Validación manual extra para WhatsApp (por si acaso bypassan el HTML5)
+            const whatsappRegex = /^[\+]?[0-9\s\-]{8,}$/; // Al menos 8 caracteres (números, espacios, guiones, opcional + al inicio)
+            if (!whatsappRegex.test(whatsappInput.value)) {
+                errorWhatsapp.classList.remove('hidden');
+                whatsappInput.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+                if(isValid) whatsappInput.focus(); // Enfocar si es el primer error
+                isValid = false;
+            } else {
+                errorWhatsapp.classList.add('hidden');
+                whatsappInput.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+            }
+
+            if (!isValid) return; // Detiene el envío si hay errores de validación
 
             // Preparar los datos
             const formData = new FormData(form);
@@ -679,12 +705,6 @@
             // Consolidar checkboxes en un solo string separado por comas
             const disponibilidadValues = Array.from(disponibilidadCheckboxes).map(cb => cb.value).join(', ');
             formData.set('disponibilidad', disponibilidadValues);
-
-            // Si la URL es la de ejemplo, simulamos el envío
-            if(scriptURL.includes('REEMPLAZAR_ESTO')) {
-                simulateSubmit(formData);
-                return;
-            }
 
             // Cambiar estado del botón (cargando)
             const originalBtnText = submitBtn.innerHTML;
@@ -713,31 +733,6 @@
                     submitBtn.innerHTML = originalBtnText;
                 });
         });
-
-        // Función para simular el envío en el entorno de prueba
-        function simulateSubmit(formData) {
-            console.log("Datos a enviar a Google Sheets:", Object.fromEntries(formData.entries()));
-            
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = 'Enviando respuestas... <div class="loader"></div>';
-            successMsg.classList.add('hidden');
-            errorMsg.classList.add('hidden');
-
-            setTimeout(() => {
-                successMsg.classList.remove('hidden');
-                form.reset();
-                // Reset custom UI states
-                radioCards.forEach(card => {
-                    card.querySelector('div.flex').classList.remove('border-brand-600', 'bg-brand-50');
-                    card.querySelector('div.flex').classList.add('border-transparent');
-                    card.querySelector('.radio-check').classList.add('hidden');
-                });
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-                console.log("Envío simulado. ¡Recuerda cambiar el scriptURL en el código HTML por el tuyo!");
-            }, 1500);
-        }
     </script>
 </body>
 </html>
