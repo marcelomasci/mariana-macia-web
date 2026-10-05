@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopción de Integración - Mariana Macía</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f9fafb; /* bg-gray-50 */
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Loader Animation */
+        .loader {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 3px solid #ffffff;
+            width: 20px;
+            height: 20px;
+            -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Custom Radio and Checkbox Styling */
+        input[type="radio"], input[type="checkbox"] {
+            accent-color: #4f46e5; /* Tailwind indigo-600 */
+        }
+        
+        .radio-card input:checked + div {
+            border-color: #4f46e5;
+            background-color: #eef2ff; /* indigo-50 */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5', // Color principal (Indigo)
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-gray-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <nav class="w-full bg-white shadow-sm fixed top-0 z-50 border-b border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-flex-col">
+                    <span class="font-bold text-xl tracking-tight text-gray-900 block font-serif">Mariana Macía</span>
+                    <span class="text-xs text-gray-500 font-medium">Abogada especializada en familia y adopción</span>
+                </div>
+                <div class="hidden sm:block">
+                    <a href="#formulario" class="inline-flex items-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-brand-600 hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition-colors">
+                        Evaluar mi caso
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <section class="relative bg-white pt-16 pb-12 lg:pt-24 lg:pb-16 border-b border-gray-100">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="text-brand-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Adopción de Integración</span>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                    Darle nombre legal al <span class="text-brand-600 italic">amor que ya existe</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto">
+                    El apellido no es solo un dato en un documento. Para muchas familias, es el símbolo de algo que ya ocurrió en la vida real: una persona que llegó, se quedó, y se convirtió en parte fundamental de ese hogar.
+                </p>
+                <a href="#formulario" class="inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-md text-white bg-brand-600 hover:bg-brand-500 md:text-lg transition-transform hover:-translate-y-0.5 shadow-lg shadow-brand-500/30">
+                    Completar Formulario de Evaluación
+                </a>
+            </div>
+        </section>
+
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+                
+                <!-- Introducción -->
+                <div class="prose prose-lg text-gray-700 max-w-none">
+                    <p>Hay familias donde alguien cumple un rol parental desde hace años — acompañando, criando, estando presente en lo cotidiano — y sin embargo ese vínculo no tiene reflejo en ningún papel. La adopción de integración existe exactamente para eso: para que lo que ya es real también sea legal.</p>
+                </div>
+
+                <!-- ¿De qué estamos hablando? -->
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">¿De qué estamos hablando exactamente?</h2>
+                    <p class="text-lg text-gray-700 mb-8">La adopción de integración es la figura legal que permite que la pareja de mamá o papá adopte al hijo o hija de su cónyuge o conviviente. Es para esas familias ensambladas donde alguien llegó, se quedó y asumió un rol que en la práctica ya es el de un padre o una madre.</p>
+                    
+                    <blockquote class="bg-brand-50 border-l-4 border-brand-600 p-6 rounded-r-lg shadow-sm">
+                        <p class="text-xl font-serif text-brand-900 italic m-0">"La adopción de integración no crea un vínculo. Lo reconoce. Ese lazo ya existe en la crianza, en el amor y en lo cotidiano."</p>
+                    </blockquote>
+                </div>
+
+                <!-- ¿Qué significa legalmente? -->
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">¿Qué significa legalmente?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Apellido</h3>
+                            <p class="text-gray-600 text-sm">La persona adoptada puede sumar el apellido del adoptante al propio, reemplazarlo, o conservar únicamente su apellido de origen, según lo que se solicite y la justicia resuelva.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Herencia</h3>
+                            <p class="text-gray-600 text-sm">Se generan derechos hereditarios plenos, exactamente como si fuera hijo o hija biológico.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Protección</h3>
+                            <p class="text-gray-600 text-sm">La familia queda amparada por un marco legal estable, con todos los derechos y deberes que eso implica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mitos -->
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Lo que muchas familias creen (y no es así)</h2>
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-lg border border-gray-200">
+                            <h4 class="font-bold text-red-600 mb-2 flex items-start">
+                                <span class="mr-2">✕</span> Mito 1: "Para hacer esto tengo que anotarme en el RUAGA o en alguna lista de espera."
+                            </h4>
+                            <p class="text-gray-700 pl-6"><strong class="font-semibold text-gray-900">No.</strong> La adopción de integración no requiere inscripción en ningún registro de adoptantes. Es un proceso diferente a la adopción de niños sin familia.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg border border-gray-200">
+                            <h4 class="font-bold text-red-600 mb-2 flex items-start">
+                                <span class="mr-2">✕</span> Mito 2: "Solo se puede hacer mientras la persona a adoptar es menor de edad."
+                            </h4>
+                            <p class="text-gray-700 pl-6"><strong class="font-semibold text-gray-900">No.</strong> Si existió un vínculo socioafectivo real durante la minoría de edad, el proceso puede iniciarse incluso cuando la persona ya es adulta.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg border border-gray-200">
+                            <h4 class="font-bold text-red-600 mb-2 flex items-start">
+                                <span class="mr-2">✕</span> Mito 3: "Si hay conflicto con el progenitor biológico, el proceso no es viable."
+                            </h4>
+                            <p class="text-gray-700 pl-6"><strong class="font-semibold text-gray-900">No es así de simple.</strong> La situación del progenitor biológico es uno de los ejes del análisis, pero cada caso es diferente. Es necesario evaluar la situación particular para poder asesorar sobre la conveniencia o no de esta figura legal.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg border border-gray-200">
+                            <h4 class="font-bold text-red-600 mb-2 flex items-start">
+                                <span class="mr-2">✕</span> Mito 4: "Es un trámite que se hace en el Registro Civil y no tiene costo."
+                            </h4>
+                            <p class="text-gray-700 pl-6 mb-3"><strong class="font-semibold text-gray-900">No.</strong> La adopción de integración es un proceso judicial. No es un trámite administrativo ni automático. Como todo proceso legal, implica honorarios profesionales y gastos procesales. Conocer esto de antemano es parte de tomar una decisión informada.</p>
+                            <p class="text-gray-600 text-sm pl-6 italic">En la consulta de asesoramiento, todos los valores y costos asociados son informados en forma clara y por escrito, para que puedas evaluar el proceso con total transparencia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejes de Evaluación -->
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">¿Cómo saber si es el camino para tu familia?</h2>
+                    <p class="text-lg text-gray-700 mb-8">No todos los casos se encuadran en la adopción de integración. Por eso, antes de iniciar cualquier proceso, es fundamental hacer un análisis personalizado de la situación. Estos son los cuatro ejes centrales que se evalúan:</p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex">
+                            <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-lg mr-4 mt-1">1</span>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900">El vínculo entre los posibles adoptante y adoptado</h4>
+                                <p class="text-gray-600">Historia, convivencia y cotidianeidad compartida.</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-lg mr-4 mt-1">2</span>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900">La situación del progenitor biológico</h4>
+                                <p class="text-gray-600">Presencia y ejercicio real del rol parental.</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-lg mr-4 mt-1">3</span>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900">El reconocimiento social del vínculo</h4>
+                                <p class="text-gray-600">Ámbito escolar, familiar y social.</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-lg mr-4 mt-1">4</span>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900">La historia y el tiempo del vínculo familiar</h4>
+                                <p class="text-gray-600">Antigüedad, continuidad y consolidación del lazo.</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="text-center">
+                        <p class="text-xl font-serif text-brand-900 italic font-medium">"Cada situación es única. El análisis personalizado es el primer paso para saber si este es tu camino."</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="formulario" class="bg-white py-16 sm:py-24 border-t border-gray-200">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="mb-10">
+                    <span class="text-brand-600 font-bold tracking-wider uppercase text-sm mb-2 block">Parte 2</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                        Formulario de Evaluación
+                    </h2>
+                    <p class="text-lg text-gray-600">
+                        <strong>¡Hola! Este formulario te lleva menos de 3 minutos.</strong> Con tus respuestas voy a poder evaluar si tu situación encuadra en la adopción de integración y cuál sería el mejor camino para tu familia. Una vez que lo completes, me contacto con vos por WhatsApp para coordinar tu primera consulta.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 sm:p-10 rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100">
+                    
+                    <form id="google-sheet-form" class="space-y-10">
+                        
+                        <!-- SECCIÓN 1 — DATOS DE CONTACTO -->
+                        <div class="space-y-6">
+                            <h3 class="text-xl font-bold text-gray-900 border-b pb-2 mb-4">Sección 1: Datos de contacto</h3>
+                            
+                            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                                <div class="sm:col-span-2">
+                                    <label for="nombre" class="block text-sm font-semibold text-gray-700">1. Nombre y apellido <span class="text-red-500">*</span></label>
+                                    <input type="text" name="nombre" id="nombre" required class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 sm:text-sm py-3 px-4 border bg-gray-50">
+                                </div>
+
+                                <div>
+                                    <label for="email" class="block text-sm font-semibold text-gray-700">2. Email <span class="text-red-500">*</span></label>
+                                    <input type="email" name="email" id="email" required class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 sm:text-sm py-3 px-4 border bg-gray-50">
+                                </div>
+
+                                <div>
+                                    <label for="whatsapp" class="block text-sm font-semibold text-gray-700">3. Tu WhatsApp <span class="text-red-500">*</span></label>
+                                    <p class="text-xs text-gray-500 mt-1 mb-2">Código de área + número, sin el 0 ni el 15. Ej: 1140859414</p>
+                                    <input type="tel" name="whatsapp" id="whatsapp" required class="block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 sm:text-sm py-3 px-4 border bg-gray-50">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-3">4. ¿Dónde vivís? <span class="text-red-500">*</span></label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="ubicacion" value="CABA" required class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">CABA</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="ubicacion" value="Zona Norte PBA" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Zona Norte Prov. de Buenos Aires</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="ubicacion" value="Zona Oeste PBA" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Zona Oeste Prov. de Buenos Aires</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="ubicacion" value="Zona Sur PBA" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Zona Sur Prov. de Buenos Aires</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="ubicacion" value="Interior del país" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Interior del país</span>
+                                    </label>
+                                    <label class="flex items-center mt-2">
+                                        <input type="radio" name="ubicacion" value="Otro" id="ubicacion_otro" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Otro:</span>
+                                        <input type="text" name="ubicacion_otro_texto" class="ml-2 border-b border-gray-300 focus:border-brand-500 focus:outline-none text-sm px-2 py-1 w-48 bg-transparent" placeholder="Especificar">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECCIÓN 2 — EVALUACIÓN DE VIABILIDAD -->
+                        <div class="space-y-6">
+                            <h3 class="text-xl font-bold text-gray-900 border-b pb-2 mb-4 mt-8">Sección 2: Evaluación de viabilidad</h3>
+                            <p class="text-sm text-gray-500 italic mb-4">Las siguientes preguntas nos ayudan a entender tu situación antes de la consulta.</p>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-3">5. ¿Cuál es tu rol en esta situación? <span class="text-red-500">*</span></label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="rol" value="Pareja que quiere adoptar" required class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Soy la pareja de mamá o papá y quiero adoptar</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="rol" value="Persona a ser adoptada" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Soy la persona que quiere ser adoptada</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="rol" value="Progenitor" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Soy mamá o papá y mi pareja quiere adoptar a mi hijo/a</span>
+                                    </label>
+                                    <label class="flex items-center mt-2">
+                                        <input type="radio" name="rol" value="Otro" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Otro:</span>
+                                        <input type="text" name="rol_otro_texto" class="ml-2 border-b border-gray-300 focus:border-brand-500 focus:outline-none text-sm px-2 py-1 w-48 bg-transparent" placeholder="Especificar">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-3">6. ¿Cuántos años tiene actualmente la persona a adoptar? <span class="text-red-500">*</span></label>
+                                <div class="flex space-x-4">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="edad_adoptado" value="Menos de 18 años" required class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Menos de 18 años</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="edad_adoptado" value="18 años o más" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">18 años o más</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-3">7. ¿Hubo convivencia o crianza compartida durante la minoría de edad? <span class="text-red-500">*</span></label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="convivencia" value="Sí, durante infancia/adolescencia" required class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Sí, convivieron durante la infancia y/o adolescencia</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="convivencia" value="Vínculo sin convivencia permanente" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Hubo vínculo pero no convivencia permanente</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="convivencia" value="No hubo convivencia en minoría de edad" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">No hubo convivencia en la minoría de edad</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-3">8. ¿Cuál es la situación actual de la pareja adulta? <span class="text-red-500">*</span></label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="situacion_pareja" value="Casados o unión convivencial" required class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Están casados o en unión convivencial</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="situacion_pareja" value="Separados o divorciados" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Están separados o divorciados</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="situacion_pareja" value="Falleció un progenitor" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Uno de los progenitores biológicos falleció</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-3">9. ¿Cuál es la situación del otro progenitor biológico? <span class="text-red-500">*</span></label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="situacion_progenitor_biologico" value="De acuerdo" required class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Está de acuerdo con la adopción</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="situacion_progenitor_biologico" value="Sin vínculo real / desvinculado" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">No tiene vínculo real / se desvinculó</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="situacion_progenitor_biologico" value="Falleció" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Falleció</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="situacion_progenitor_biologico" value="Falta de filiación" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">No reconoció al hijo/a (falta de filiación)</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="situacion_progenitor_biologico" value="Oposición o conflicto" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Hay oposición o conflicto</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECCIÓN 3 — TU SITUACIÓN Y LA CONSULTA -->
+                        <div class="space-y-6">
+                            <h3 class="text-xl font-bold text-gray-900 border-b pb-2 mb-4 mt-8">Sección 3: Tu situación y la consulta</h3>
+                            
+                            <div>
+                                <label for="situacion_breve" class="block text-sm font-semibold text-gray-700">10. Contame brevemente tu situación <span class="text-red-500">*</span></label>
+                                <p class="text-xs text-gray-500 mt-1 mb-2">1 o 2 oraciones alcanzan. ¿Desde hace cuánto está presente quien quiere adoptar? ¿Hay algo puntual que quieras que sepa?</p>
+                                <textarea id="situacion_breve" name="situacion_breve" rows="3" required class="block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 sm:text-sm py-3 px-4 border bg-gray-50"></textarea>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-3">11. ¿Cómo definirías tu momento actual? <span class="text-red-500">*</span></label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="momento_actual" value="Buscando información" required class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Estoy buscando información todavía</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="momento_actual" value="Quiero saber viabilidad" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Ya quiero saber si mi caso es viable</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="momento_actual" value="Lista/o para iniciar" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Estoy lista/o para iniciar el proceso</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="momento_actual" value="Urgencia" class="h-4 w-4 text-brand-600 border-gray-300 focus:ring-brand-500">
+                                        <span class="ml-3 text-sm text-gray-700">Tengo urgencia</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="pt-4">
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">¿Qué tipo de primera consulta preferís? <span class="text-red-500">*</span></h4>
+                                <p class="text-sm text-gray-600 mb-4 italic">Esta es tu primera inversión para llevar adelante el proceso. En ambas opciones, si decidís continuar con el estudio, el valor se descuenta de los primeros honorarios.</p>
+                                
+                                <div class="space-y-4">
+                                    <!-- Opción 1: Asesoramiento Estratégico -->
+                                    <label class="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none radio-card">
+                                        <input type="radio" name="tipo_consulta" value="Asesoramiento Estratégico" class="sr-only" required>
+                                        <div class="flex w-full items-center justify-between border-2 border-transparent p-4 rounded-lg -m-4 transition-colors">
+                                            <div class="flex items-center">
+                                                <div class="text-sm">
+                                                    <p class="font-bold text-gray-900 mb-1">REUNIÓN DE ASESORAMIENTO ESTRATÉGICO</p>
+                                                    <div class="text-xs text-gray-500 font-medium mb-2 space-x-2">
+                                                        <span class="bg-gray-100 px-2 py-1 rounded">Videollamada</span>
+                                                        <span class="bg-gray-100 px-2 py-1 rounded">60 min</span>
+                                                        <span class="bg-brand-50 text-brand-700 px-2 py-1 rounded font-bold">$75.000</span>
+                                                    </div>
+                                                    <p class="text-gray-600">Para quienes ya saben que quieren avanzar y necesitan un panorama completo antes de comprometerse. Analizamos tu caso en profundidad, definimos estrategia y entregamos presupuesto detallado por escrito.</p>
+                                                    <p class="text-green-600 mt-2 text-xs font-semibold flex items-center">
+                                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                                        Valor deducible de futuros honorarios
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="ml-4 shrink-0 radio-check hidden">
+                                                <svg class="h-6 w-6 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 12l2 2 4-4"></path></svg>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <!-- Opción 2: Llamada de Claridad -->
+                                    <label class="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none radio-card">
+                                        <input type="radio" name="tipo_consulta" value="Llamada de Claridad" class="sr-only">
+                                        <div class="flex w-full items-center justify-between border-2 border-transparent p-4 rounded-lg -m-4 transition-colors">
+                                            <div class="flex items-center">
+                                                <div class="text-sm">
+                                                    <p class="font-bold text-gray-900 mb-1">LLAMADA DE CLARIDAD</p>
+                                                    <div class="text-xs text-gray-500 font-medium mb-2 space-x-2">
+                                                        <span class="bg-gray-100 px-2 py-1 rounded">Llamada telefónica</span>
+                                                        <span class="bg-gray-100 px-2 py-1 rounded">25 min</span>
+                                                        <span class="bg-brand-50 text-brand-700 px-2 py-1 rounded font-bold">$50.000</span>
+                                                    </div>
+                                                    <p class="text-gray-600">Para quienes todavía tienen dudas de si su caso encuadra en esta figura y necesitan una primera orientación antes de dar un paso más. Despejamos dudas principales.</p>
+                                                    <p class="text-green-600 mt-2 text-xs font-semibold flex items-center">
+                                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                                        Valor deducible de futuros honorarios
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="ml-4 shrink-0 radio-check hidden">
+                                                <svg class="h-6 w-6 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 12l2 2 4-4"></path></svg>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-3">12. ¿En qué horario tenés disponibilidad? (Podés marcar más de uno) <span class="text-red-500">*</span></label>
+                                <div class="space-y-2">
+                                    <!-- Nota: Usamos checkbox aquí porque dice "Podés marcar más de uno" implícitamente por los cuadraditos en el documento, aunque para Google Sheets es mejor guardarlo como texto separado por comas -->
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="disponibilidad" value="Mañana" class="h-4 w-4 text-brand-600 border-gray-300 rounded focus:ring-brand-500 disponibilidad-cb">
+                                        <span class="ml-3 text-sm text-gray-700">Mañana</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="disponibilidad" value="Mediodía" class="h-4 w-4 text-brand-600 border-gray-300 rounded focus:ring-brand-500 disponibilidad-cb">
+                                        <span class="ml-3 text-sm text-gray-700">Mediodía</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="disponibilidad" value="Tarde" class="h-4 w-4 text-brand-600 border-gray-300 rounded focus:ring-brand-500 disponibilidad-cb">
+                                        <span class="ml-3 text-sm text-gray-700">Tarde</span>
+                                    </label>
+                                </div>
+                                <p id="error-disponibilidad" class="text-red-500 text-xs mt-2 hidden">Por favor, selecciona al menos un horario.</p>
+                            </div>
+                        </div>
+
+                        <!-- Botón Enviar -->
+                        <div class="pt-6">
+                            <button type="submit" id="submit-btn" class="w-full flex justify-center py-4 px-4 border border-transparent rounded-md shadow-sm text-lg font-bold text-white bg-brand-600 hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition-colors">
+                                Enviar mis respuestas
+                            </button>
+                        </div>
+                        
+                        <!-- Mensajes de feedback -->
+                        <div id="success-msg" class="hidden rounded-md bg-green-50 p-6 mt-6 border border-green-200">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <h3 class="text-lg font-medium text-green-800">¡Gracias por completar el formulario!</h3>
+                                    <div class="mt-2 text-sm text-green-700">
+                                        <p>Me contacto con vos por WhatsApp en las próximas horas para coordinar tu primera consulta.</p>
+                                        <p class="mt-2 text-xs italic">Recordá: esta no es una consulta gratuita. Es el primer paso concreto para analizar tu caso y definir el camino jurídico de tu familia. — Mariana Macía.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="error-msg" class="hidden rounded-md bg-red-50 p-4 mt-4 border border-red-200">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-red-800">
+                                        Hubo un error al enviar el formulario. Por favor, intenta de nuevo.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <span class="font-bold text-xl tracking-tight text-white block font-serif mb-2">Mariana Macía</span>
+                <span class="text-sm text-gray-400">Abogada especializada en familia y adopción</span><br>
+                <a href="https://instagram.com/mamaporadopcionyabogada" target="_blank" class="text-brand-400 hover:text-brand-300 text-sm inline-flex items-center mt-2">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path></svg>
+                    @mamaporadopcionyabogada
+                </a>
+            </div>
+            <div class="text-sm text-gray-500">
+                &copy; <span id="year"></span> Mariana Macía. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Actualizar año en el footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // UI Logic para las tarjetas de Radio Button (Consultas)
+        const radioCards = document.querySelectorAll('.radio-card');
+        const radioInputs = document.querySelectorAll('input[name="tipo_consulta"]');
+        
+        radioInputs.forEach(input => {
+            input.addEventListener('change', (e) => {
+                // Reset all
+                radioCards.forEach(card => {
+                    card.querySelector('div.flex').classList.remove('border-brand-600', 'bg-brand-50');
+                    card.querySelector('div.flex').classList.add('border-transparent');
+                    card.querySelector('.radio-check').classList.add('hidden');
+                });
+                
+                // Active state
+                if(e.target.checked) {
+                    const activeCard = e.target.closest('.radio-card');
+                    activeCard.querySelector('div.flex').classList.remove('border-transparent');
+                    activeCard.querySelector('div.flex').classList.add('border-brand-600', 'bg-brand-50');
+                    activeCard.querySelector('.radio-check').classList.remove('hidden');
+                }
+            });
+        });
+
+        // Manejar lógica del campo "Otro" en Ubicación
+        const radiosUbicacion = document.querySelectorAll('input[name="ubicacion"]');
+        const inputOtroUbicacion = document.querySelector('input[name="ubicacion_otro_texto"]');
+        
+        radiosUbicacion.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if(e.target.value === 'Otro') {
+                    inputOtroUbicacion.required = true;
+                    inputOtroUbicacion.focus();
+                } else {
+                    inputOtroUbicacion.required = false;
+                    inputOtroUbicacion.value = '';
+                }
+            });
+        });
+
+        inputOtroUbicacion.addEventListener('focus', () => {
+            document.getElementById('ubicacion_otro').checked = true;
+        });
+
+        // Manejar lógica del campo "Otro" en Rol
+        const radiosRol = document.querySelectorAll('input[name="rol"]');
+        const inputOtroRol = document.querySelector('input[name="rol_otro_texto"]');
+        
+        radiosRol.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if(e.target.value === 'Otro') {
+                    inputOtroRol.required = true;
+                    inputOtroRol.focus();
+                } else {
+                    inputOtroRol.required = false;
+                    inputOtroRol.value = '';
+                }
+            });
+        });
+
+        inputOtroRol.addEventListener('focus', () => {
+            document.querySelector('input[name="rol"][value="Otro"]').checked = true;
+        });
+
+
+        // Lógica de envío a Google Sheets
+        const form = document.getElementById('google-sheet-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('success-msg');
+        const errorMsg = document.getElementById('error-msg');
+        const errorDisponibilidad = document.getElementById('error-disponibilidad');
+        
+        // REEMPLAZA ESTA URL CON LA QUE OBTENGAS DE TU APPS SCRIPT
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzLQuOMHdKMuciY3t-QistfMt6jDPYi_5bs137mNZ5PxJX1bFd2EZt4z5Rh_E9S5KncdA/exec';
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            // Validación manual para checkboxes (Disponibilidad)
+            const disponibilidadCheckboxes = document.querySelectorAll('.disponibilidad-cb:checked');
+            if (disponibilidadCheckboxes.length === 0) {
+                errorDisponibilidad.classList.remove('hidden');
+                document.querySelector('.disponibilidad-cb').focus();
+                return; // Detiene el envío
+            } else {
+                errorDisponibilidad.classList.add('hidden');
+            }
+
+            // Preparar los datos
+            const formData = new FormData(form);
+            
+            // Consolidar campo "Otro" si fueron seleccionados
+            if(formData.get('ubicacion') === 'Otro') {
+                formData.set('ubicacion', 'Otro: ' + formData.get('ubicacion_otro_texto'));
+            }
+            if(formData.get('rol') === 'Otro') {
+                formData.set('rol', 'Otro: ' + formData.get('rol_otro_texto'));
+            }
+            // Limpiar los campos de texto extra para que no se envíen como columnas separadas si no queremos
+            formData.delete('ubicacion_otro_texto');
+            formData.delete('rol_otro_texto');
+
+            // Consolidar checkboxes en un solo string separado por comas
+            const disponibilidadValues = Array.from(disponibilidadCheckboxes).map(cb => cb.value).join(', ');
+            formData.set('disponibilidad', disponibilidadValues);
+
+            // Si la URL es la de ejemplo, simulamos el envío
+            if(scriptURL.includes('REEMPLAZAR_ESTO')) {
+                simulateSubmit(formData);
+                return;
+            }
+
+            // Cambiar estado del botón (cargando)
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Enviando respuestas... <div class="loader"></div>';
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+
+            fetch(scriptURL, { method: 'POST', body: formData})
+                .then(response => {
+                    successMsg.classList.remove('hidden');
+                    form.reset();
+                    // Reset custom UI states
+                    radioCards.forEach(card => {
+                        card.querySelector('div.flex').classList.remove('border-brand-600', 'bg-brand-50');
+                        card.querySelector('div.flex').classList.add('border-transparent');
+                        card.querySelector('.radio-check').classList.add('hidden');
+                    });
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    errorMsg.classList.remove('hidden');
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                });
+        });
+
+        // Función para simular el envío en el entorno de prueba
+        function simulateSubmit(formData) {
+            console.log("Datos a enviar a Google Sheets:", Object.fromEntries(formData.entries()));
+            
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Enviando respuestas... <div class="loader"></div>';
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+
+            setTimeout(() => {
+                successMsg.classList.remove('hidden');
+                form.reset();
+                // Reset custom UI states
+                radioCards.forEach(card => {
+                    card.querySelector('div.flex').classList.remove('border-brand-600', 'bg-brand-50');
+                    card.querySelector('div.flex').classList.add('border-transparent');
+                    card.querySelector('.radio-check').classList.add('hidden');
+                });
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                console.log("Envío simulado. ¡Recuerda cambiar el scriptURL en el código HTML por el tuyo!");
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
